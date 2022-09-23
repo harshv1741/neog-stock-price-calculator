@@ -30,9 +30,9 @@ const successMsg = (msg) => {
   successSE.play();
 };
 
-const calcFunction = (buyPrice, noOfStocks, sellPrice) => {
-  if (sellPrice > buyPrice) {
-    var profit = (sellPrice - buyPrice) * noOfStocks;
+const calcFunction = (buyPrice, noOfStocks, currentPrice) => {
+  if (currentPrice > buyPrice) {
+    var profit = (currentPrice - buyPrice) * noOfStocks;
     var profitPer = Math.trunc((profit / buyPrice) * 100);
     successMsg(
       "✅ You are in profit! 🥳\nProfit by ➡️ " +
@@ -41,8 +41,8 @@ const calcFunction = (buyPrice, noOfStocks, sellPrice) => {
         profitPer +
         "%"
     );
-  } else if (sellPrice < buyPrice) {
-    var loss = (buyPrice - sellPrice) * noOfStocks;
+  } else if (buyPrice > currentPrice) {
+    var loss = (buyPrice - currentPrice) * noOfStocks;
     var lossPer = Math.trunc((loss / buyPrice) * 100);
     failMsg(
       "❌ You are in loss! 😔\nLoss by ➡️ " +
@@ -51,7 +51,7 @@ const calcFunction = (buyPrice, noOfStocks, sellPrice) => {
         lossPer +
         "%"
     );
-  } else if (sellPrice == buyPrice) {
+  } else if (currentPrice == buyPrice) {
     infoMsg("Currently, there is no change in stock price");
   } else {
     infoMsg("Please! Enter your input again.");
@@ -59,12 +59,12 @@ const calcFunction = (buyPrice, noOfStocks, sellPrice) => {
 };
 
 submit.addEventListener("click", () => {
-  var buyPrice = stockPurchasePrice.value;
-  var noOfStocks = stockCount.value;
-  var sellPrice = stockCurrentPrice.value;
+  var buyPrice = Number(stockPurchasePrice.value);
+  var noOfStocks = Number(stockCount.value);
+  var currentPrice = Number(stockCurrentPrice.value);
 
-  if (buyPrice && noOfStocks && sellPrice) {
-    calcFunction(buyPrice, noOfStocks, sellPrice);
+  if (buyPrice && noOfStocks && currentPrice) {
+    calcFunction(buyPrice, noOfStocks, currentPrice);
   } else {
     infoMsg("🛑 Please! Enter all the information for finding stock price");
   }
@@ -72,8 +72,8 @@ submit.addEventListener("click", () => {
 
 reset.addEventListener("click", () => {
   text.style.display = "none";
-  stockCount.value = "none";
-  stockPurchasePrice.value = "none";
-  stockCurrentPrice.value = "none";
+  stockCount.value = "";
+  stockPurchasePrice.value = "";
+  stockCurrentPrice.value = "";
   resetSE.play();
 });

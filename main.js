@@ -4,23 +4,30 @@ const stockCurrentPrice = document.querySelector("#current-price");
 const submit = document.querySelector("#submit");
 const reset = document.querySelector("#reset");
 const text = document.querySelector("#message");
+const policeWhistleSE = document.querySelector("#policewhistle");
+const failSE = document.querySelector("#fail-sound-effect");
+const successSE = document.querySelector("#success-sound-effect");
+const resetSE = document.querySelector("#reset-sound-effect");
 
 const infoMsg = (msg) => {
   text.style.display = "inline-block";
   text.style.color = "#17E7E1";
   text.innerText = msg;
+  policeWhistleSE.play();
 };
 
 const failMsg = (msg) => {
   text.style.display = "inline-block";
   text.style.color = "#EC2713";
   text.innerText = msg;
+  failSE.play();
 };
 
 const successMsg = (msg) => {
   text.style.display = "inline-block";
   text.style.color = "#3AEC13";
   text.innerText = msg;
+  successSE.play();
 };
 
 const calcFunction = (buyPrice, noOfStocks, sellPrice) => {
@@ -52,6 +59,8 @@ const calcFunction = (buyPrice, noOfStocks, sellPrice) => {
     );
   } else if (sellPrice == buyPrice) {
     infoMsg("Currently, there is no change in stock price");
+  } else {
+    infoMsg("Please! Enter your input again.");
   }
 };
 
@@ -63,7 +72,7 @@ submit.addEventListener("click", () => {
   if (buyPrice && noOfStocks && sellPrice) {
     calcFunction(buyPrice, noOfStocks, sellPrice);
   } else {
-    infoMsg("🛑 Please! Enter all the information for finding ");
+    infoMsg("🛑 Please! Enter all the information for finding stock price");
   }
 });
 
@@ -72,4 +81,5 @@ reset.addEventListener("click", () => {
   stockCount.value = "none";
   stockPurchasePrice.value = "none";
   stockCurrentPrice.value = "none";
+  resetSE.play();
 });

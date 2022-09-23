@@ -59,9 +59,9 @@ const calcFunction = (buyPrice, noOfStocks, currentPrice) => {
 };
 
 submit.addEventListener("click", () => {
-  var buyPrice = stockPurchasePrice.value;
-  var noOfStocks = stockCount.value;
-  var currentPrice = stockCurrentPrice.value;
+  var buyPrice = Number(stockPurchasePrice.value);
+  var noOfStocks = Number(stockCount.value);
+  var currentPrice = Number(stockCurrentPrice.value);
 
   if (buyPrice && noOfStocks && currentPrice) {
     calcFunction(buyPrice, noOfStocks, currentPrice);
@@ -72,8 +72,8 @@ submit.addEventListener("click", () => {
 
 reset.addEventListener("click", () => {
   text.style.display = "none";
-  stockCount.value = "none";
-  stockPurchasePrice.value = "none";
-  stockCurrentPrice.value = "none";
+  stockCount.value = "";
+  stockPurchasePrice.value = "";
+  stockCurrentPrice.value = "";
   resetSE.play();
 });

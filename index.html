@@ -8,11 +8,13 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- Title Section -->
     <div class="main">
       <h1>Stock Price Calculator 💻</h1>
       <h3>Welcome to my stock price calculator 👏</h3>
     </div>
 
+    <!-- Main Content Section -->
     <div class="content">
       <label for="initial-price">Stock Buying Price</label>&nbsp;&nbsp;
       <input type="number" name="input" id="buying-price" placeholder="0" />
@@ -27,6 +29,21 @@
       <button type="reset" id="reset">Reset</button>
       <h2><p id="message"></p></h2>
     </div>
+
+    <!-- Audio Effect Section -->
+    <audio id="policewhistle">
+      <source src="sound/policewhistle.wav" type="audio/wav" />
+    </audio>
+    <audio id="fail-sound-effect">
+      <source src="sound/fail-trumpet.mp3" type="audio/mp3" />
+    </audio>
+    <audio id="success-sound-effect">
+      <source src="sound/tada.mp3" type="audio/mp3" />
+    </audio>
+    <audio id="reset-sound-effect">
+      <source src="sound/reset.mp3" type="audio/mp3" />
+    </audio>
+
     <script type="text/javascript" src="main.js"></script>
   </body>
 </html>

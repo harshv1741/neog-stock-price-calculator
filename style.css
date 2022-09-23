@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+
+body {
+  font-family: "Inter", sans-serif;
+  text-align: center;
+  margin: 1rem;
+  background-color: black;
+  color: white;
+}
+
+.main {
+  border-radius: 1rem;
+  padding: 1rem 1.5rem 1rem 1.5rem;
+  display: inline-block;
+}
+
+input {
+  border: 5px solid green;
+  background-color: transparent;
+  color: white;
+  transition-duration: 0.5s;
+  border-radius: 2rem;
+  padding: 0.8rem;
+  outline: none;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
+}
+
+input:hover {
+  border-color: red;
+  background-color: white;
+  color: black;
+}
+
+input:focus {
+  border-color: blue;
+  background-color: white;
+  color: black;
+}
+
+button {
+  display: inline-block;
+  margin-top: 1rem;
+  transition-duration: 0.4s;
+  border: 5px solid green;
+  background-color: transparent;
+  color: white;
+  border-radius: 2rem;
+  padding: 12px 36px;
+}
+
+button:hover {
+  background-color: white;
+  color: black;
+  border-color: red;
+}

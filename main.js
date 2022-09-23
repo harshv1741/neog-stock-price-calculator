@@ -32,27 +32,21 @@ const successMsg = (msg) => {
 
 const calcFunction = (buyPrice, noOfStocks, sellPrice) => {
   if (sellPrice > buyPrice) {
-    var profit = sellPrice - buyPrice;
-    var profitWithStocks = profit * noOfStocks;
+    var profit = (sellPrice - buyPrice) * noOfStocks;
     var profitPer = Math.trunc((profit / buyPrice) * 100);
     successMsg(
       "✅ You are in profit! 🥳\nProfit by ➡️ " +
         profit +
-        "\nQuantity profit ➡️ " +
-        profitWithStocks +
         "\nPercentage ➡️ " +
         profitPer +
         "%"
     );
   } else if (sellPrice < buyPrice) {
-    var loss = buyPrice - sellPrice;
-    var lossWithStocks = loss * noOfStocks;
+    var loss = (buyPrice - sellPrice) * noOfStocks;
     var lossPer = Math.trunc((loss / buyPrice) * 100);
     failMsg(
       "❌ You are in loss! 😔\nLoss by ➡️ " +
         loss +
-        "\nQuantity loss ➡️ " +
-        lossWithStocks +
         "\nPercentage ➡️ " +
         lossPer +
         "%"

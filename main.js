@@ -23,22 +23,47 @@ const successMsg = (msg) => {
   text.innerText = msg;
 };
 
-submit.addEventListener("click", () => {
-  var sPP = stockPurchasePrice.value;
-  var sC = stockCount.value;
-  var sCP = stockCurrentPrice.value;
-
-  if (sPP && sC && sCP) {
-    alert(
-      "Stock Purchase Price: " +
-        sPP +
-        "\nStock Count: " +
-        sC +
-        "\nStock Current Price: " +
-        sCP
+const calcFunction = (buyPrice, noOfStocks, sellPrice) => {
+  if (sellPrice > buyPrice) {
+    var profit = sellPrice - buyPrice;
+    var profitWithStocks = profit * noOfStocks;
+    var profitPer = Math.trunc((profit / buyPrice) * 100);
+    successMsg(
+      "✅ You are in profit! 🥳\nProfit by ➡️ " +
+        profit +
+        "\nQuantity profit ➡️ " +
+        profitWithStocks +
+        "\nPercentage ➡️ " +
+        profitPer +
+        "%"
     );
+  } else if (sellPrice < buyPrice) {
+    var loss = buyPrice - sellPrice;
+    var lossWithStocks = loss * noOfStocks;
+    var lossPer = Math.trunc((loss / buyPrice) * 100);
+    failMsg(
+      "❌ You are in loss! 😔\nLoss by ➡️ " +
+        loss +
+        "\nQuantity loss ➡️ " +
+        lossWithStocks +
+        "\nPercentage ➡️ " +
+        lossPer +
+        "%"
+    );
+  } else if (sellPrice == buyPrice) {
+    infoMsg("Currently, there is no change in stock price");
+  }
+};
+
+submit.addEventListener("click", () => {
+  var buyPrice = stockPurchasePrice.value;
+  var noOfStocks = stockCount.value;
+  var sellPrice = stockCurrentPrice.value;
+
+  if (buyPrice && noOfStocks && sellPrice) {
+    calcFunction(buyPrice, noOfStocks, sellPrice);
   } else {
-    infoMsg("🛑 Please Enter Both the fields");
+    infoMsg("🛑 Please! Enter all the information for finding ");
   }
 });
 

@@ -1,10 +1,13 @@
+// Input
 const stockPurchasePrice = document.querySelector("#buying-price");
 const stockCount = document.querySelector("#stock-quantity");
 const stockCurrentPrice = document.querySelector("#current-price");
+// Output
 const submit = document.querySelector("#submit");
 const reset = document.querySelector("#reset");
 const text = document.querySelector("#message");
-const policeWhistleSE = document.querySelector("#policewhistle");
+//Sound Effect
+const infoSE = document.querySelector("#info-sound-effect");
 const failSE = document.querySelector("#fail-sound-effect");
 const successSE = document.querySelector("#success-sound-effect");
 const resetSE = document.querySelector("#reset-sound-effect");
@@ -13,7 +16,7 @@ const infoMsg = (msg) => {
   text.style.display = "inline-block";
   text.style.color = "#17E7E1";
   text.innerText = msg;
-  policeWhistleSE.play();
+  infoSE.play();
 };
 
 const failMsg = (msg) => {
